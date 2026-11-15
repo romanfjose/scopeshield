@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScopeShield — Freelance Rate Calculator, SOW Armor & Scope-Creep Defense Kit</title>
+  <meta name="description" content="Free freelance true hourly rate & project quote calculator. Protect your margins with ironclad SOW templates, 3-tier proposals, and 15 client defense scripts." />
+  <meta property="og:title" content="ScopeShield — Stop Working Unpaid Scope-Creep Hours" />
+  <meta property="og:description" content="Calculate your real freelance rate in 30 seconds and lock down every client project with battle-tested SOW clauses, Change Orders, and scripts." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://romanfjose.github.io/scopeshield/" />
+  <meta property="og:image" content="https://romanfjose.github.io/scopeshield/og-cover.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ScopeShield — Freelance True-Rate Calculator & Pro SOW Vault" />
+  <meta name="twitter:description" content="Free client-side freelance hourly & project quote calculator + ironclad SOW & Change-Order kit." />
+  <meta name="twitter:image" content="https://romanfjose.github.io/scopeshield/og-cover.png" />
+  <link rel="canonical" href="https://romanfjose.github.io/scopeshield/" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ScopeShield Freelance Rate Calculator & Pro Vault",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "19.00",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a href="#" class="logo">🛡️ ScopeShield</a>
+      <div class="nav-links">
+        <a href="#calculator" class="hide-sm">Free Rate Calculator</a>
+        <a href="#inside" class="hide-sm">Peek Inside</a>
+        <a href="#pricing" class="hide-sm">Pricing</a>
+        <button class="btn btn-primary btn-sm" onclick="triggerCheckout()">
+          Get Pro Vault — <span class="js-price-now">$19</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero wrap">
+    <div class="pill">FREE INTERACTIVE TOOL + COMPLETE FREELANCE OPERATIONS VAULT</div>
+    <h1>Stop Losing $1,000+ Per Project to <span>"Quick Tweaks"</span> & Underpricing.</h1>
+    <p>
+      Use our free calculator below to find your real profit-safe freelance rate—or grab the complete
+      <strong>ScopeShield Pro Vault</strong> (SOW contracts, 3-Tier Proposal Engine, Change Orders &amp; 15 awkward-money email scripts).
+    </p>
+    <div class="hero-cta">
+      <a href="#calculator" class="btn btn-outline">⚡ Use Free Rate &amp; Quote Calculator</a>
+      <button class="btn btn-primary" onclick="triggerCheckout()">
+        🛡️ Download Full Pro Vault (<span class="js-price-now">$19</span>)
+      </button>
+    </div>
+    <p class="trust-note">One-time purchase • Instant ZIP download • Zero subscriptions • Pays for itself in 12 minutes of saved work</p>
+  </header>
+
+  <!-- FREE INTERACTIVE CALCULATOR -->
+  <section id="calculator" class="section wrap">
+    <div class="calc-shell">
+      <div class="calc-header">
+        <div>
+          <span style="color:var(--emerald);font-size:0.78rem;font-weight:700;text-transform:uppercase;">100% Free Browser Tool — No Email Required</span>
+          <h2 style="font-size:1.55rem;margin-top:0.2rem;">True Freelance Rate &amp; Buffered Project Pricer</h2>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="printFreeEstimate()">🖨️ Print Free 1-Page Estimate</button>
+      </div>
+
+      <div class="calc-grid">
+        <div>
+          <div class="input-row">
+            <div class="field">
+              <label for="fIncome">Target Annual Take-Home Pay ($)</label>
+              <input type="number" id="fIncome" value="100000" oninput="calculateFreeTool()" />
+            </div>
+            <div class="field">
+              <label for="fOverhead">Annual Software, Gear &amp; Health ($)</label>
+              <input type="number" id="fOverhead" value="5400" oninput="calculateFreeTool()" />
+            </div>
+          </div>
+          <div class="input-row">
+            <div class="field">
+              <label for="fTax">Self-Employment Tax Reserve (%)</label>
+              <input type="number" id="fTax" value="28" oninput="calculateFreeTool()" />
+            </div>
+            <div class="field">
+              <label for="fWeeks">Working Weeks / Year (after PTO)</label>
+              <input type="number" id="fWeeks" value="46" oninput="calculateFreeTool()" />
+            </div>
+          </div>
+          <div class="input-row">
+            <div class="field">
+              <label for="fHours">Real Billable Hours / Week (excl. admin)</label>
+              <input type="number" id="fHours" value="22" oninput="calculateFreeTool()" />
+            </div>
+            <div class="field">
+              <label for="fProjHours">Next Project Estimated Hours</label>
+              <input type="number" id="fProjHours" value="35" oninput="calculateFreeTool()" />
+            </div>
+          </div>
+          <p style="font-size:0.8rem;color:var(--muted);margin-top:0.4rem;">
+            💡 <strong>Reality check:</strong> Most solo freelancers only bill 20–25 hours out of a 40-hour week once sales calls, proposals, emails, and bookkeeping are counted.
+          </p>
+        </div>
+
+        <div class="result-panel">
+          <div>
+            <div class="rate-cards">
+              <div class="rate-card">
+                <div class="num" id="resMinRate">$0/hr</div>
+                <div class="cap">Survival Floor Rate</div>
+              </div>
+              <div class="rate-card highlight">
+                <div class="num" id="resTargetRate">$0/hr</div>
+                <div class="cap">Profit-Safe Rate (+20% Margin)</div>
+              </div>
+            </div>
+
+            <div class="rate-cards">
+              <div class="rate-card highlight">
+                <div class="num" id="resProjectQuote">$0</div>
+                <div class="cap">Recommended Fixed Quote (+22% Armor)</div>
+              </div>
+              <div class="rate-card">
+                <div class="num" id="resDeposit">$0</div>
+                <div class="cap">50% Kickoff Deposit to Collect</div>
+              </div>
+            </div>
+
+            <div class="leak-alert">
+              ⚠️ <strong>Scope-Creep Warning:</strong> Quoting raw hours without a 22% revision &amp; QA buffer quietly costs you <strong id="resLeakAmount">$0</strong> on this single project.
+            </div>
+          </div>
+
+          <div class="upsell-strip">
+            <h4>Want 3-Tier Price Anchoring + Ironclad SOW Clauses?</h4>
+            <p>Upgrade to the Pro Vault to generate 3-Option Client Proposal PDFs, 60-second Change Orders, and attach our Stalled-Client SOW.</p>
+            <button class="btn btn-primary btn-sm" style="width:100%;" onclick="triggerCheckout()">
+              Unlock Complete ScopeShield Pro Vault — <span class="js-price-now">$19</span> →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PEEK INSIDE THE VAULT -->
+  <section id="inside" class="section wrap">
+    <div class="section-title">
+      <h2>Peek Inside the Pro Vault Before You Buy</h2>
+      <p>Zero ChatGPT fluff. Real clauses, real scripts, and a standalone offline software suite.</p>
+    </div>
+
+    <div class="preview-tabs">
+      <button class="ptab active" onclick="selectPreview('sow', this)">📄 Clause 6: Stalled Client Protection</button>
+      <button class="ptab" onclick="selectPreview('script', this)">💬 Script #1: Polite Scope-Creep Pivot</button>
+      <button class="ptab" onclick="selectPreview('suite', this)">💻 Offline Pro Suite + PERT Sheet</button>
+    </div>
+
+    <div class="preview-box">
+      <div id="previewContent" class="code-snippet"></div>
+    </div>
+  </section>
+
+  <!-- EVERYTHING INCLUDED -->
+  <section class="section wrap">
+    <div class="section-title">
+      <h2>Everything You Get Instant Access To</h2>
+      <p>Works for web developers, designers, copywriters, marketers, video editors &amp; solo agencies.</p>
+    </div>
+
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div style="font-size:1.6rem;">🛡️</div>
+        <h3>Master SOW + Change Order + Retainer</h3>
+        <p>Plain-English contracts with explicit Out-of-Scope exclusions, consolidated revision caps, IP transfer strictly upon final payment, and Restart Fees for ghosting clients.</p>
+      </div>
+      <div class="feat-card">
+        <div style="font-size:1.6rem;">✉️</div>
+        <h3>15 Awkward-Money Email Scripts</h3>
+        <p>Word-for-word responses for scope creep, "can you give me a discount?", 3-stage overdue invoice escalations, rate increases, firing toxic clients, and pitching retainers.</p>
+      </div>
+      <div class="feat-card">
+        <div style="font-size:1.6rem;">⚡</div>
+        <h3>Offline Pro Web App + PERT Sheet</h3>
+        <p>Generate 3-Tier Anchored Proposal PDFs, 1-click Change Order PDFs, score Discovery Call red flags, and calculate PERT-weighted margins in Google Sheets or Excel.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="section wrap">
+    <div class="pricing-box">
+      <div class="pill">EARLY-BIRD LAUNCH SPECIAL</div>
+      <h2 style="font-size:1.85rem;">ScopeShield Pro Vault (v1.0)</h2>
+      <p style="color:var(--muted);font-size:0.95rem;">Save one single unpaid hour and this toolkit pays for itself 5x over.</p>
+
+      <div class="price-tag">
+        <span class="price-old js-price-old">$29</span>
+        <span class="price-now js-price-now">$19</span>
+        <span style="color:var(--muted);font-size:0.9rem;">USD • one-time</span>
+      </div>
+
+      <ul class="checklist">
+        <li><strong>Master Statement of Work (SOW)</strong> with Ghosting &amp; IP-Lock Clauses (`.md`)</li>
+        <li><strong>Change-Order Request Form</strong> &amp; <strong>Use-It-or-Lose-It Retainer Agreement</strong></li>
+        <li><strong>15 Battle-Tested Client Defense Scripts</strong> (Scope creep, discounts, late pay)</li>
+        <li><strong>3-Tier Anchored Proposal Template</strong> &amp; <strong>Discovery Call Red-Flag Scorecard</strong></li>
+        <li><strong>ScopeShield Pro Offline Suite (`.html` app)</strong> — 3-Tier Proposal &amp; Change-Order PDF Generator</li>
+        <li><strong>PERT Margin Estimator Spreadsheet (`.csv`)</strong> with live Excel/Sheets formulas</li>
+        <li>Lifetime updates + commercial license for your freelance or agency business</li>
+      </ul>
+
+      <button class="btn btn-primary" style="width:100%;font-size:1.05rem;padding:0.95rem;" onclick="triggerCheckout()">
+        Instant Download — Get ScopeShield Pro for <span class="js-price-now">$19</span>
+      </button>
+      <p style="margin-top:0.8rem;font-size:0.8rem;color:var(--muted);">
+        Secure checkout • Instant `.zip` access right after payment
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section wrap">
+    <div class="section-title">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h4>What format are the files in?</h4>
+        <p>Everything arrives in one clean `.zip` archive containing Markdown (`.md`) templates (paste straight into Notion, Google Docs, Word, or PandaDoc), a formula-ready `.csv` spreadsheet for Google Sheets/Excel, and a standalone `.html` Pro Suite that runs offline in any browser.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do I need any paid subscriptions or Notion Pro to use this?</h4>
+        <p>Zero! Unlike bloated SaaS tools charging $29/month forever, ScopeShield runs locally on tools you already use for free.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Who is this built for?</h4>
+        <p>Independent developers, UI/UX designers, copywriters, consultants, video creators, and 1–10 person boutique agencies doing fixed-price or retainer client work.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>© 2026 ScopeShield. Built for independent builders, designers &amp; consultants.</p>
+    </div>
+  </footer>
+
+  <!-- OWNER CHECKOUT LINK REMINDER MODAL -->
+  <div id="setupModal" class="modal-backdrop" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <h3>⚡ Almost Live! Connect Your Checkout Link</h3>
+      <p>
+        Your landing page is working! To start accepting real payments, upload
+        <code>dist/ScopeShield_Freelance_Vault_v1.zip</code> to <strong>Lemon Squeezy</strong> or <strong>Gumroad</strong>,
+        then paste your product link into <code>site/config.js</code> (`CHECKOUT_URL`).
+      </p>
+      <button class="btn btn-primary btn-sm" onclick="closeModal()">Got It</button>
+    </div>
+  </div>
+
+  <!-- PRINTABLE FREE ESTIMATE -->
+  <div id="printQuoteSheet" class="print-quote"></div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
